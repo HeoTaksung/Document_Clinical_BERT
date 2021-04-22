@@ -8,9 +8,9 @@
 
       * Doc_BERT_LSTM
       
-         * Repeat the BERT model as many times as the number of sentences
+         * Repeat the Clinical BERT model as many times as the number of sentences
         
-         * Collecting the CLS_token extracted through the BERT
+         * Collecting the CLS_token extracted through the Clinical BERT
 
          * Long Short Term Memory
 
@@ -19,9 +19,9 @@
 
       * Doc_BERT_MEAN
 
-         * Repeat the BERT model as many times as the number of sentences
+         * Repeat the Clinical BERT model as many times as the number of sentences
         
-         * Collecting the CLS_token extracted through the BERT
+         * Collecting the CLS_token extracted through the Clinical BERT
 
          * Global Average Pooling
 
