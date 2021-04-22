@@ -8,20 +8,20 @@
 
       * Doc_BERT_LSTM
       
-         * Repeat the BERT (R-BERT) model as many times as the number of sentences
+         * Repeat the BERT model as many times as the number of sentences
         
-         * Collecting the CLS_token extracted through R-RERT
+         * Collecting the CLS_token extracted through the BERT
 
-         * LSTM
+         * Long Short Term Memory
 
          * Classifier
 
 
       * Doc_BERT_MEAN
 
-         * Repeat the BERT (R-BERT) model as many times as the number of sentences
+         * Repeat the BERT model as many times as the number of sentences
         
-         * Collecting the CLS_token extracted through R-RERT
+         * Collecting the CLS_token extracted through the BERT
 
          * Global Average Pooling
 
