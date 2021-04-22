@@ -16,7 +16,7 @@ class Doc_Bert_LSTM(tf.keras.Model):
 		self.lstm = tf.keras.layers.LSTM(self.bert.config.hidden_size)
 		self.dropout2 = tf.keras.layers.Dropout(self.bert.config.hidden_dropout_prob)
 		self.classifier = tf.keras.layers.Dense(self.num_class, acitvation='sigmoid',
-												kernel_initializer=tf.keras.initializers.TruncatedNormal(self.bert.config.initializer_range))
+							kernel_initializer=tf.keras.initializers.TruncatedNormal(self.bert.config.initializer_range))
 
 	def call(self, inputs):  # inputs shape = (inputs_ids, attention_mask, token_type)
 		ids = inputs[0]  # (the number of sentences, batch_size, sentence length)
@@ -46,7 +46,7 @@ class Doc_Bert_MEAN(tf.keras.Model):
 		self.dropout1 = tf.keras.layers.Dropout(self.bert.config.hidden_dropout_prob)
 		self.dropout2 = tf.keras.layers.Dropout(self.bert.config.hidden_dropout_prob)
 		self.classifier = tf.keras.layers.Dense(self.num_class, acitvation='sigmoid',
-												kernel_initializer=tf.keras.initializers.TruncatedNormal(self.bert.config.initializer_range))
+							kernel_initializer=tf.keras.initializers.TruncatedNormal(self.bert.config.initializer_range))
 
 	def call(self, inputs):  # inputs shape = (inputs_ids, attention_mask, token_type)
 		ids = inputs[0]  # (the number of sentences, batch_size, sentence length)
@@ -86,8 +86,7 @@ with strategy.scope():
 
 	model.compile(optimizer=optimizer, loss=loss, metrics=[metric, F1_macro, F1_micro])
 
-earlystop_callback = EarlyStopping(monitor='val_f1_micro', verbose=1, min_delta=0.0001,
-								   patience=5, mode='max', restore_best_weights=True)
+earlystop_callback = EarlyStopping(monitor='val_f1_micro', verbose=1, min_delta=0.0001, patience=5, mode='max', restore_best_weights=True)
 
 checkpoint_path = os.path.join('./', '', 'weights.h5')
 checkpoint_dir = os.path.dirname(checkpoint_path)
@@ -98,8 +97,7 @@ else:
 	os.makedirs(checkpoint_dir, exist_ok=True)
 	print("{} -- Folder create complete \n".format(checkpoint_dir))
 
-cp_callback = ModelCheckpoint(checkpoint_path, monitor='val_f1_macro', mode='max', verbose=1,
-							  save_best_only=True, save_weights_only=True)
+cp_callback = ModelCheckpoint(checkpoint_path, monitor='val_f1_macro', mode='max', verbose=1, save_best_only=True, save_weights_only=True)
 
 model.fit(train_X, train_y, epochs=epochs, batch_size=batch_size,
 		  validation_data=(dev_X, dev_y), callbacks=[earlystop_callback, cp_callback])
